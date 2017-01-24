@@ -21,11 +21,11 @@
 
         this.setConfig = function (config)
         {
-            page_length_default = config.lengthDefault;
-            paginator_label_before = config.labelBefore;
-            paginator_label_next = config.labelNext;
-            paginator_label_first = config.labelFirst;
-            paginator_label_last = config.labelLast;
+            page_length_default = config.lengthDefault || page_length_default;
+            paginator_label_before = config.labelBefore || paginator_label_before;
+            paginator_label_next = config.labelNext || paginator_label_next;
+            paginator_label_first = config.labelFirst || paginator_label_first;
+            paginator_label_last = config.labelLast || paginator_label_last;
         }
 
         this.$get = function ($rootScope) {
@@ -229,7 +229,6 @@
             },
         }
     }
-
+    module.provider("paginator", provider)
     module.directive("paginator", directive);
-    module.provider("paginatorProvider", provider)
 })(angular.module('com.alphonsegs.paginator', []));
