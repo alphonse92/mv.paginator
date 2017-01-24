@@ -2,6 +2,18 @@
 
 Angular plugin for easy paginate any element.
 
+##Instalation:
+
+### Using NPM:
+```
+  npm install mv-paginator
+```
+###Using BOWER:
+
+```
+  bower install mv-paginator
+```
+
 ##HTML impl
 
 The innerHTML especifies the template, basically the plugin add a ng-repeat to the first element. $paginator_item is the item's array, and name is the property for this object.
