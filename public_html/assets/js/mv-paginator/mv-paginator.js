@@ -15,10 +15,11 @@
     var paginator_max_pages = 10;
     $page.elements = []
     function provider() {
+        
         this.setPageLengthDefault = function (len) {
             page_length_default = len;
         }
-
+        
         this.setConfig = function (config)
         {
             page_length_default = config.lengthDefault || page_length_default;
@@ -52,7 +53,7 @@
 
 
 
-    function link(scope, element, attrs, controller, transcludeFn, $compile) {
+    function link(scope, element, attrs, controller, transcludeFn, $compile,paginator) {
 
 
         function _init()
@@ -69,6 +70,7 @@
             }
             _initPages();
             _initListeners();
+            compile($compile, element, attrs)(scope)
         }
 
         scope.setPage = function (page) {
@@ -186,6 +188,18 @@
 
         function compile($compile, element, attrs) {
             var item = element[0].children[0];
+            if(!scope._isInit){
+                console.log("recien iniciado")
+                scope._dom= element[0].children[0];
+                scope._isInit=true
+            }else
+            {
+                console.log("re inicializando ")
+                element[0].innerHTML="";
+                item=scope._dom;
+                
+            }
+            
             item.setAttribute("ng-repeat", "$paginator_item in _page")
             var html = "<ul class='paginator'>";
             html += "<li ng-click=\"first()\"><a href=\"javascript:void(0)\">" + paginator_label_first + "</a></li>"
@@ -210,10 +224,13 @@
 
 
         _init();
-        compile($compile, element, attrs)(scope)
+        scope.$watch("_data",function(){
+            _init()
+        })
+        
     }
 
-    directive.$inject = ["$compile"]
+    directive.$inject = ["$compile","paginator"]
     function directive($compile) {
         return  {
             restrict: 'E',
@@ -221,11 +238,10 @@
             //Terminal prevents compilation of any other directive on first pass
             terminal: true,
             scope: {
-                _data: '=pagedata',
-                _pageLength: "=length",
+                _data: '=pagedata'
             },
-            link: function (scope, element, attrs, controller, transcludeFn) {
-                link(scope, element, attrs, controller, transcludeFn, $compile);
+            link: function (scope, element, attrs, controller, transcludeFn,paginator) {
+                link(scope, element, attrs, controller, transcludeFn, $compile,paginator);
             },
         }
     }
