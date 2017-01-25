@@ -1,6 +1,20 @@
 # mv.paginator
 
 Angular plugin for easy paginate any element.
+```
+DEMO using www.jsonplaceholder.com requests: https://jsfiddle.net/alphonse92/x528jk9f/
+```
+##Instalation:
+
+### Using NPM:
+```
+  npm install mv-paginator
+```
+###Using BOWER:
+
+```
+  bower install mv-paginator
+```
 
 ##HTML impl
 
