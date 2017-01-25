@@ -60,14 +60,18 @@
         {
             scope._page = [];
             scope._pages = [];
-            scope._page = scope._data
             scope.paginator_pages = [];
             scope._actualPage = 0;
+            if(!scope._data)
+            {
+                scope._data=[];
+            }
             //validate page length from attributte
             if (isNaN(scope._pageLength))
             {
                 scope._pageLength = page_length_default;
             }
+            
             _initPages();
             _initListeners();
             compile($compile, element, attrs)(scope)
@@ -172,6 +176,7 @@
         }
         function _initPages()
         {
+            
             for (var i = 0; i < scope._data.length; i++)
             {
                 scope._pages.push(scope._data.splice(0, scope._pageLength))

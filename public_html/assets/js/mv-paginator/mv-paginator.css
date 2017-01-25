@@ -6,7 +6,7 @@ ul.paginator
     float: left;
     padding: 0px;
 }
-ul.paginator:after, ul.paginator:before
+paginator:after,paginator:before,ul.paginator:after, ul.paginator:before
 {
     content: "";
     display: table;
