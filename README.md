@@ -2,7 +2,7 @@
 
 Angular plugin for easy paginate any element.
 ```
-DEMO: https://jsfiddle.net/alphonse92/esoszz8a/
+DEMO using www.jsonplaceholder.com requests: https://jsfiddle.net/alphonse92/x528jk9f/
 ```
 ##Instalation:
 
