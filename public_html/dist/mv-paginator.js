@@ -218,7 +218,6 @@
 
       element.append(item);
       element.append(paginador)
-
       var compiled = $compile(element,null,5000);
       return function (scope) {
         compiled(scope);
@@ -234,7 +233,7 @@
     scope.$watch(function () {
       return scope.$eval(attrs.pagedata)
     },function () {
-      scope._data = JSON.parse(JSON.stringify(scope.$eval(attrs.pagedata)));
+      scope._data = scope.$eval(attrs.pagedata);
       _init()
     })
 
