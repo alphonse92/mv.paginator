@@ -188,7 +188,6 @@
         page.visible = (i < paginator_max_pages - 1);
         scope.paginator_pages.push(page)
       }
-      console.log("asdasd",scope._pages)
       scope.setPage(0)
     }
 
@@ -235,8 +234,6 @@
     scope.$watch(function () {
       return scope.$eval(attrs.pagedata)
     },function () {
-      console.log(scope.$eval(attrs.pagedata))
-      console.log(scope)
       scope._data = JSON.parse(JSON.stringify(scope.$eval(attrs.pagedata)));
       _init()
     })
